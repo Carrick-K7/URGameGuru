@@ -1,4 +1,4 @@
-package com.example.urgameguru.ui.dashboard;
+package com.example.urgameguru.ui.my_expo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.urgameguru.R;
 
-public class DashboardFragment extends Fragment {
+public class MyExpoFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private MyExpoViewModel myExpoViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        myExpoViewModel =
+                new ViewModelProvider(this).get(MyExpoViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_my_expo, container, false);
+        final TextView textView = root.findViewById(R.id.text_home);
+        myExpoViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
