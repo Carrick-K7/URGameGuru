@@ -1,16 +1,16 @@
-package com.example.urgameguru.ui.gurus;
+package com.example.urgameguru.settings;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GurusViewModel extends ViewModel {
+public class SettingsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GurusViewModel() {
+    public SettingsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gurus fragment");
+        mText.setValue("This is settings fragment");
     }
 
     public LiveData<String> getText() {
