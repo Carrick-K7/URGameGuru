@@ -5,11 +5,11 @@
       <map>
         <entry key="..\:/URGameGuru/app/src/main/res/drawable/bg_achievement.xml" value="0.1527777777777778" />
         <entry key="..\:/URGameGuru/app/src/main/res/drawable/bg_game_page_comment.xml" value="0.1527777777777778" />
-        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_game_page.xml" value="0.14666666666666667" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_game_page.xml" value="0.3333333333333333" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_login.xml" value="0.1644021739130435" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_main.xml" value="0.1644021739130435" />
-        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_my_expo.xml" value="0.17753623188405798" />
-        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_my_game_page.xml" value="0.16666666666666666" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_my_expo.xml" value="0.16666666666666666" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_my_game_page.xml" value="0.3333333333333333" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/fragment_gurus.xml" value="0.1644021739130435" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/fragment_my_expo.xml" value="0.1644021739130435" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/fragment_settings.xml" value="0.1644021739130435" />
