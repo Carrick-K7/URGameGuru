@@ -1,4 +1,4 @@
-package com.example.urgameguru.mygamedetail;
+package com.example.urgameguru.my_game_detail;
 
 import androidx.lifecycle.ViewModel;
 

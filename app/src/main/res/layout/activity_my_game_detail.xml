@@ -16,6 +16,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/wild_rift_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -109,17 +110,17 @@
     
     <EditText
         android:id="@+id/et_my_show_board"
-        android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:maxHeight="200dp"
         android:background="@drawable/bg_achievement"
         android:padding="15dp"
-        android:layout_margin="20dp"
-        android:text="Show us who you are in this game! Your rank, your achievement, or anything else!"
-        android:maxHeight="200dp"
-        android:textSize="18dp"
+        android:hint="Show us who you are in this game! Your rank, your achievement, or anything else!"
+        android:textSize="18sp"
+        android:textColor="#38BAB8"
         android:ellipsize="end"
-        android:gravity="top"
-        android:textColor="#38BAB8"/>
+        android:gravity="top" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -127,15 +128,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="My screenshots and clips"
             android:paddingLeft="20dp"
             android:paddingTop="3dp"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:layout_weight="1"/>
 
         <ImageView
+            android:id="@+id/add_screenshots_clips"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/add_black"
@@ -201,6 +203,7 @@
             android:layout_weight="1"/>
 
         <ImageView
+            android:id="@+id/add_articles"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/add_black"
@@ -236,16 +239,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="· Game review 2"
-                android:textSize="14dp"
-                android:paddingTop="5dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· more..."
                 android:textSize="14dp"
                 android:paddingTop="5dp"
                 android:textColor="#38BAB8"
@@ -290,16 +283,6 @@
                 android:maxLines="1"
                 android:ellipsize="end"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· more..."
-                android:textSize="14dp"
-                android:paddingTop="5dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -338,18 +321,18 @@
                 android:maxLines="1"
                 android:ellipsize="end"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· more..."
-                android:textSize="14dp"
-                android:paddingTop="5dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
         </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/more_articles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="more.."
+        android:textColor="#38BAB8"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:paddingEnd="20dp"/>
 
 </LinearLayout>
