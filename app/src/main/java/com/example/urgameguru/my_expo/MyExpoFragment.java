@@ -13,8 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.urgameguru.R;
-import com.example.urgameguru.gamedetail.GameDetailActivity;
-import com.example.urgameguru.mygamedetail.MyGameDetailActivity;
+import com.example.urgameguru.my_game_detail.MyGameDetailActivity;
 
 public class MyExpoFragment extends Fragment {
 

@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.urgameguru.R;
-import com.example.urgameguru.gamedetail.GameDetailActivity;
+import com.example.urgameguru.game_detail.GameDetailActivity;
 
 public class GurusFragment extends Fragment {
 
