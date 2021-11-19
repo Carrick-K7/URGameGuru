@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.URGameGuru">
         <activity
+            android:name=".comment_list.CommentListActivity"
+            android:exported="true"
+            android:label="@string/title_activity_comment_list"
+            android:theme="@style/Theme.URGameGuru.NoActionBar" />
+        <activity
+            android:name=".article_list.ArticleListActivity"
+            android:exported="true"
+            android:label="@string/title_activity_article_list"
+            android:theme="@style/Theme.URGameGuru.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
@@ -18,12 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mygamedetail.MyGameDetailActivity">
-
-        </activity>
-        <activity android:name=".gamedetail.GameDetailActivity">
-
-        </activity>
+        <activity android:name=".my_game_detail.MyGameDetailActivity" />
+        <activity android:name=".game_detail.GameDetailActivity" />
+        <activity android:name=".add_article.AddArticleActivity" />
+        <activity android:name=".media_gallery.MediaGalleryActivity" />
     </application>
 
 </manifest>
