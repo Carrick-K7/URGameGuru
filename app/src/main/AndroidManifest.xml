@@ -20,14 +20,19 @@
             android:label="@string/title_activity_article_list"
             android:theme="@style/Theme.URGameGuru.NoActionBar" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:name=".LoginActivity"
+            android:label="@string/title_login_activity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:exported="true" />
         <activity android:name=".my_game_detail.MyGameDetailActivity" />
         <activity android:name=".game_detail.GameDetailActivity" />
         <activity android:name=".add_article.AddArticleActivity" />

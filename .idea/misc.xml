@@ -7,7 +7,7 @@
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_article_list.xml" value="0.3062200956937799" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_comment_list.xml" value="0.1" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_game_detail.xml" value="0.33" />
-        <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_login.xml" value="0.1423106350420811" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_media_gallery.xml" value="0.30833333333333335" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_my_game.xml" value="0.290625" />
@@ -19,10 +19,16 @@
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.23384615384615384" />
         <entry key="..\:/URGameGuru/app/src/main/res/drawable/bg_achievement.xml" value="0.1527777777777778" />
         <entry key="..\:/URGameGuru/app/src/main/res/drawable/bg_game_page_comment.xml" value="0.1527777777777778" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_add_article.xml" value="0.16666666666666666" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_article_list.xml" value="0.4466666666666667" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_comment_list.xml" value="0.4466666666666667" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_game_detail.xml" value="0.17916666666666667" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_game_page.xml" value="0.3333333333333333" />
-        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_login.xml" value="0.1644021739130435" />
-        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_main.xml" value="0.1644021739130435" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_media_gallery.xml" value="0.17916666666666667" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_my_expo.xml" value="0.16666666666666666" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_my_game_detail.xml" value="0.17916666666666667" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_my_game_page.xml" value="0.3333333333333333" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/fragment_gurus.xml" value="0.1644021739130435" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/fragment_my_expo.xml" value="0.1644021739130435" />
@@ -30,7 +36,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
