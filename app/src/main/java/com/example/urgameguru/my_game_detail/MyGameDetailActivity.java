@@ -15,9 +15,11 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.example.urgameguru.R;
 import com.example.urgameguru.add_article.AddArticleActivity;
+import com.example.urgameguru.add_media.AddMediaActivity;
 import com.example.urgameguru.article_list.ArticleListActivity;
 import com.example.urgameguru.game_detail.GameDetailActivity;
 import com.example.urgameguru.media_gallery.MediaGalleryActivity;
+import com.example.urgameguru.show_media.ShowMediaActivity;
 
 public class MyGameDetailActivity extends Activity {
 
@@ -39,9 +41,9 @@ public class MyGameDetailActivity extends Activity {
             startActivity(intent);
         });
 
-        ImageView ivAddMedia = findViewById(R.id.add_screenshots_clips);
+        ImageView ivAddMedia = findViewById(R.id.add_media);
         ivAddMedia.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MediaGalleryActivity.class);
+            Intent intent = new Intent(this, AddMediaActivity.class);
             startActivity(intent);
         });
 
@@ -54,6 +56,12 @@ public class MyGameDetailActivity extends Activity {
         TextView tvMoreArticles = findViewById(R.id.more_articles);
         tvMoreArticles.setOnClickListener(v -> {
             Intent intent = new Intent(this, ArticleListActivity.class);
+            startActivity(intent);
+        });
+
+        TextView tvShowMedia = findViewById(R.id.tv_screenshot1);
+        tvShowMedia.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ShowMediaActivity.class);
             startActivity(intent);
         });
     }
