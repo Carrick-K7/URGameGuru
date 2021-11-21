@@ -48,7 +48,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Developer:  "/>
+                android:textSize="12sp"
+                android:text="@string/label_developer"/>
 
             <TextView
                 android:layout_width="wrap_content"
