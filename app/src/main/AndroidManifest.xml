@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.URGameGuru">
         <activity
+            android:name=".show_media.ShowMediaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".add_media.AddMediaActivity"
+            android:exported="true" />
+        <activity
             android:name=".comment_list.CommentListActivity"
             android:exported="true"
             android:label="@string/title_activity_comment_list"

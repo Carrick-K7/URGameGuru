@@ -143,5 +143,8 @@
     <string name="top_comment">Top Comments</string>
     <string name="recent_comment">Recent Comments</string>
     <string name="label_developer">"Developer: "</string>
+    <string name="select">Select image / video</string>
+    <string name="upload">Upload</string>
+
     <string name="title_login_activity">LoginActivity</string>
 </resources>

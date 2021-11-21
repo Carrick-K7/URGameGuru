@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_add_article.xml" value="0.33" />
+        <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_add_media.xml" value="0.1" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_article_list.xml" value="0.3062200956937799" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_comment_list.xml" value="0.1" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_game_detail.xml" value="0.33" />
@@ -12,10 +13,12 @@
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_media_gallery.xml" value="0.30833333333333335" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_my_game.xml" value="0.290625" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_my_game_detail.xml" value="0.33" />
+        <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_show_media.xml" value="0.3875" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/fragment_article_list.xml" value="0.3875" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/fragment_gurus.xml" value="0.18" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/fragment_my_expo.xml" value="0.33" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/fragment_settings.xml" value="0.1423106350420811" />
+        <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/viewholder_add_media.xml" value="0.38153846153846155" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.23384615384615384" />
         <entry key="..\:/URGameGuru/app/src/main/res/drawable/bg_achievement.xml" value="0.1527777777777778" />
         <entry key="..\:/URGameGuru/app/src/main/res/drawable/bg_game_page_comment.xml" value="0.1527777777777778" />
