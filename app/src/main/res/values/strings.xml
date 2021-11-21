@@ -142,4 +142,5 @@
     <string name="action_settings">Settings</string>
     <string name="top_comment">Top Comments</string>
     <string name="recent_comment">Recent Comments</string>
+    <string name="label_developer">"Developer: "</string>
 </resources>
