@@ -12,7 +12,7 @@
         android:id="@+id/bt_select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/select"
+        android:text="@string/label_select"
         android:gravity="center"/>
 
     <com.google.android.material.imageview.ShapeableImageView

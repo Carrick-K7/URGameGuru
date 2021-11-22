@@ -58,24 +58,20 @@ public class UploadMediaActivity extends AppCompatActivity {
         }
         );
 
-
-        Button btSelect = findViewById(R.id.bt_select);
-        btSelect.setOnClickListener(v -> {
+        findViewById(R.id.bt_select).setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-            intent.setType("image/*");
+            intent.setType("*/*");
             activityResultLauncher.launch(intent);
         });
 
-        Button btUpload = findViewById(R.id.bt_upload);
-        btUpload.setOnClickListener(v -> {
-
+        findViewById(R.id.bt_upload).setOnClickListener(v -> {
 
             mimetype = cr.getType(uploadUri);
             Log.d(TAG, mimetype);
 
             uuid = UUID.randomUUID().toString();
-            String typeStr =  mimetype.substring(0, mimetype.indexOf("/")) + "/";
-            String uploadPath = typeStr + user.getUid() + "/" + uuid;
+            String typeStr =  mimetype.substring(0, mimetype.indexOf("/"));
+            String uploadPath = typeStr + "/" + user.getUid() + "/" + uuid;
             Log.d(TAG, uploadPath);
 
             StorageReference uploadRef = storageRef.child(uploadPath);
@@ -84,7 +80,7 @@ public class UploadMediaActivity extends AppCompatActivity {
             uploadTask.addOnFailureListener( e -> {
                 Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             }).addOnSuccessListener(taskSnapshot -> {
-                Toast.makeText(this, "Upload success!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Upload " + typeStr + " success!", Toast.LENGTH_SHORT).show();
                 finish();
             });
         });

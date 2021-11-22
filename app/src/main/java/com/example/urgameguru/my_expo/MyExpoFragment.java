@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,11 @@ public class MyExpoFragment extends Fragment {
         final LinearLayout ll_wild_rift = view.findViewById(R.id.ll_wild_rift);
         ll_wild_rift.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), MyGameDetailActivity.class);
+            startActivity(intent);
+        });
+        TextView btAdd = view.findViewById(R.id.bt_add);
+        btAdd.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), AddGameActivity.class);
             startActivity(intent);
         });
     }
