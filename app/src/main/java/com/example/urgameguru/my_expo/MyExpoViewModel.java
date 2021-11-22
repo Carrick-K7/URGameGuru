@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel;
 
 public class MyExpoViewModel extends ViewModel {
 
-
     public MyExpoViewModel() {
     }
 
