@@ -4,7 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_add_article.xml" value="0.33" />
-        <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_add_media.xml" value="0.1" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_article_list.xml" value="0.3062200956937799" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_comment_list.xml" value="0.1" />
         <entry key="..\:/Carrick/URGameGuru/app/src/main/res/layout/activity_game_detail.xml" value="0.33" />
@@ -28,19 +27,25 @@
         <entry key="..\:/URGameGuru/app/src/main/res/drawable/bg_achievement.xml" value="0.1527777777777778" />
         <entry key="..\:/URGameGuru/app/src/main/res/drawable/bg_game_page_comment.xml" value="0.1527777777777778" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_add_article.xml" value="0.16666666666666666" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_add_game.xml" value="0.16666666666666666" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_add_game_detail.xml" value="0.22" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_add_media.xml" value="0.3333333333333333" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_article_list.xml" value="0.4466666666666667" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_comment_list.xml" value="0.4466666666666667" />
-        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_game_detail.xml" value="0.17916666666666667" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_game_detail.xml" value="0.4466666666666667" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_game_page.xml" value="0.3333333333333333" />
-        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_login.xml" value="0.14666666666666667" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_media_gallery.xml" value="0.17916666666666667" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_my_expo.xml" value="0.16666666666666666" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_my_game_detail.xml" value="0.17916666666666667" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_my_game_page.xml" value="0.3333333333333333" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_show_media.xml" value="0.22" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/activity_upload_media.xml" value="0.17916666666666667" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/fragment_gurus.xml" value="0.1644021739130435" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/fragment_my_expo.xml" value="0.1644021739130435" />
         <entry key="..\:/URGameGuru/app/src/main/res/layout/fragment_settings.xml" value="0.1644021739130435" />
+        <entry key="..\:/URGameGuru/app/src/main/res/layout/viewholder_add_media.xml" value="0.17916666666666667" />
       </map>
     </option>
   </component>
