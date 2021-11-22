@@ -16,4 +16,5 @@ public class Game {
         this.publisher = publisher;
         this.mode = mode;
     }
+
 }

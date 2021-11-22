@@ -150,4 +150,5 @@
     <string name="label_select_image">Select Image</string>
     <string name="label_select_video">Select Video</string>
     <string name="label_select">Select image / video</string>
+    <string name="label_name">Name</string>
 </resources>
