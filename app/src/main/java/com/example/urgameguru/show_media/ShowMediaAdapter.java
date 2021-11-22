@@ -1,4 +1,4 @@
-package com.example.urgameguru.add_media;
+package com.example.urgameguru.show_media;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,13 +16,13 @@ import com.example.urgameguru.R;
 
 import java.util.List;
 
-public class AddMediaAdapter extends RecyclerView.Adapter<AddMediaAdapter.ViewHolder> {
+public class ShowMediaAdapter extends RecyclerView.Adapter<ShowMediaAdapter.ViewHolder> {
     private final List<String> mData;
     private final LayoutInflater mInflater;
     private final Context mContext;
     private ItemClickListener mClickListener;
 
-    AddMediaAdapter(Context context, List<String> data) {
+    ShowMediaAdapter(Context context, List<String> data) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
@@ -52,7 +52,7 @@ public class AddMediaAdapter extends RecyclerView.Adapter<AddMediaAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AddMediaAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ShowMediaAdapter.ViewHolder holder, int position) {
         String url = mData.get(position);
         Glide.with(mContext).load(url).into(holder.mImageView);
     }
