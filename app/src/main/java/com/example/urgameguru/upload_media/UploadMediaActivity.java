@@ -58,14 +58,7 @@ public class UploadMediaActivity extends AppCompatActivity {
         }
         );
 
-
-        findViewById(R.id.bt_select_image).setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-            intent.setType("image/*");
-            activityResultLauncher.launch(intent);
-        });
-
-        findViewById(R.id.bt_select_video).setOnClickListener(v -> {
+        findViewById(R.id.bt_select).setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("*/*");
             activityResultLauncher.launch(intent);
@@ -77,8 +70,8 @@ public class UploadMediaActivity extends AppCompatActivity {
             Log.d(TAG, mimetype);
 
             uuid = UUID.randomUUID().toString();
-            String typeStr =  mimetype.substring(0, mimetype.indexOf("/")) + "/";
-            String uploadPath = typeStr + user.getUid() + "/" + uuid;
+            String typeStr =  mimetype.substring(0, mimetype.indexOf("/"));
+            String uploadPath = typeStr + "/" + user.getUid() + "/" + uuid;
             Log.d(TAG, uploadPath);
 
             StorageReference uploadRef = storageRef.child(uploadPath);
@@ -87,7 +80,7 @@ public class UploadMediaActivity extends AppCompatActivity {
             uploadTask.addOnFailureListener( e -> {
                 Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             }).addOnSuccessListener(taskSnapshot -> {
-                Toast.makeText(this, "Upload success!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Upload " + typeStr + " success!", Toast.LENGTH_SHORT).show();
                 finish();
             });
         });
