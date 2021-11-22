@@ -50,7 +50,7 @@ public class AddGameDetailActivity extends AppCompatActivity {
 
     public AddGameDetailActivity() {
         // [START initialize_database_ref]
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance("https://urgameguru-it5007-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
         // [END initialize_database_ref]
     }
 
@@ -65,7 +65,7 @@ public class AddGameDetailActivity extends AppCompatActivity {
 
         String name = getIntent().getStringExtra("name");
         MaterialButton btAddIcon = findViewById(R.id.bt_add_game_icon);
-        btAddIcon.setText("Select a icon for " + name);
+        btAddIcon.setText("Select an icon for " + name);
 
         //dealing with select icon image
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -109,13 +109,7 @@ public class AddGameDetailActivity extends AppCompatActivity {
 
             Game game = new Game(developer, publisher, release, mode);
 
-            //debug
-//            Map<String, Game> game = new HashMap<>();
-//            game.put("alanisawesome", new Game("June 23, 1912", "electronic", "Alan Turing", "single"));
-//
-//            mDatabase.setValue(game);
-
-            mDatabase.child("games").setValue(name)
+            mDatabase.child("games").child(name).setValue(game)
                     .addOnSuccessListener(taskSnapshot -> {
                         Toast.makeText(this, "Upload game info success!", Toast.LENGTH_SHORT).show();
                         finish();
