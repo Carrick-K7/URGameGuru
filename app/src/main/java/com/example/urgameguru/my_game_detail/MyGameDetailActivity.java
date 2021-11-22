@@ -11,15 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.example.urgameguru.R;
 import com.example.urgameguru.add_article.AddArticleActivity;
-import com.example.urgameguru.add_media.AddMediaActivity;
+import com.example.urgameguru.show_media.ShowMediaActivity;
 import com.example.urgameguru.article_list.ArticleListActivity;
 import com.example.urgameguru.game_detail.GameDetailActivity;
-import com.example.urgameguru.media_gallery.MediaGalleryActivity;
-import com.example.urgameguru.show_media.ShowMediaActivity;
+import com.example.urgameguru.upload_media.UploadMediaActivity;
 
 public class MyGameDetailActivity extends Activity {
 
@@ -41,12 +39,6 @@ public class MyGameDetailActivity extends Activity {
             startActivity(intent);
         });
 
-        ImageView ivAddMedia = findViewById(R.id.add_media);
-        ivAddMedia.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AddMediaActivity.class);
-            startActivity(intent);
-        });
-
         LinearLayout llTitle = findViewById(R.id.wild_rift_title);
         llTitle.setOnClickListener(v -> {
             Intent intent = new Intent(this, GameDetailActivity.class);
@@ -59,11 +51,19 @@ public class MyGameDetailActivity extends Activity {
             startActivity(intent);
         });
 
+        ImageView ivAddMedia = findViewById(R.id.add_media);
+        ivAddMedia.setOnClickListener(v -> {
+            Intent intent = new Intent(this, UploadMediaActivity.class);
+            startActivity(intent);
+        });
+
         TextView tvShowMedia = findViewById(R.id.tv_screenshot1);
         tvShowMedia.setOnClickListener(v -> {
             Intent intent = new Intent(this, ShowMediaActivity.class);
             startActivity(intent);
         });
+
+
     }
 
     public void hideKeyboard(View view) {
