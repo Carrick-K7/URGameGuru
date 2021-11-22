@@ -1,11 +1,11 @@
 package com.example.urgameguru.show_media;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -13,28 +13,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.urgameguru.R;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
-public class ShowMediaAdapter extends RecyclerView.Adapter<ShowMediaAdapter.ViewHolder> {
-    private final List<String> mData;
+public class ShowImageAdapter extends RecyclerView.Adapter<ShowImageAdapter.ViewHolder> {
+
+    private static final String TAG = "showImageAdapter";
+
+    private final List<StorageReference> mData;
     private final LayoutInflater mInflater;
     private final Context mContext;
     private ItemClickListener mClickListener;
 
-    ShowMediaAdapter(Context context, List<String> data) {
+    ShowImageAdapter(Context context, List<StorageReference> data) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView mTextView;
         ImageView mImageView;
 
         ViewHolder(View v){
             super(v);
-            mTextView = v.findViewById(R.id.tvTest);
             mImageView = v.findViewById(R.id.ivTest);
             v.setOnClickListener(this);
         }
@@ -47,14 +49,22 @@ public class ShowMediaAdapter extends RecyclerView.Adapter<ShowMediaAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.viewholder_add_media, parent, false);
+        View view = mInflater.inflate(R.layout.viewholder_image, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ShowMediaAdapter.ViewHolder holder, int position) {
-        String url = mData.get(position);
-        Glide.with(mContext).load(url).into(holder.mImageView);
+    public void onBindViewHolder(@NonNull ShowImageAdapter.ViewHolder holder, int position) {
+        StorageReference reference = mData.get(position);
+        Log.d(TAG, reference.toString());
+        reference.getMetadata().addOnSuccessListener(storageMetadata -> {
+            String type = storageMetadata.getContentType();
+            if (type.startsWith("image")) {
+                Glide.with(mContext)
+                        .load(reference)
+                        .into(holder.mImageView);
+            }
+        });
     }
 
     @Override
@@ -62,7 +72,7 @@ public class ShowMediaAdapter extends RecyclerView.Adapter<ShowMediaAdapter.View
         return mData.size();
     }
 
-    String getItem(int id) {
+    StorageReference getItem(int id) {
         return mData.get(id);
     }
 

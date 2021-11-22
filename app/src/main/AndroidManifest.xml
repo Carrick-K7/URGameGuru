@@ -13,7 +13,7 @@
             android:name=".upload_media.UploadMediaActivity"
             android:exported="true" />
         <activity
-            android:name=".show_media.ShowMediaActivity"
+            android:name=".show_media.ShowImageActivity"
             android:exported="true" />
         <activity
             android:name=".comment_list.CommentListActivity"
@@ -43,6 +43,7 @@
         <activity android:name=".game_detail.GameDetailActivity" />
         <activity android:name=".add_article.AddArticleActivity" />
         <activity android:name=".media_gallery.MediaGalleryActivity" />
+        <activity android:name=".show_media.ShowVideoActivity"/>
     </application>
 
 </manifest>

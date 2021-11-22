@@ -59,16 +59,19 @@ public class UploadMediaActivity extends AppCompatActivity {
         );
 
 
-        Button btSelect = findViewById(R.id.bt_select);
-        btSelect.setOnClickListener(v -> {
+        findViewById(R.id.bt_select_image).setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
             activityResultLauncher.launch(intent);
         });
 
-        Button btUpload = findViewById(R.id.bt_upload);
-        btUpload.setOnClickListener(v -> {
+        findViewById(R.id.bt_select_video).setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("*/*");
+            activityResultLauncher.launch(intent);
+        });
 
+        findViewById(R.id.bt_upload).setOnClickListener(v -> {
 
             mimetype = cr.getType(uploadUri);
             Log.d(TAG, mimetype);

@@ -9,10 +9,17 @@
     tools:context=".upload_media.UploadMediaActivity">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/bt_select"
+        android:id="@+id/bt_select_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/select"
+        android:text="@string/label_select_image"
+        android:gravity="center"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_select_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_select_video"
         android:gravity="center"/>
 
     <com.google.android.material.imageview.ShapeableImageView
