@@ -4,12 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".show_media.ShowMediaActivity">
+    tools:context=".show_media.ShowImageActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_test"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </androidx.appcompat.widget.LinearLayoutCompat>
