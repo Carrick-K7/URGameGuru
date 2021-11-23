@@ -20,11 +20,13 @@
             android:layout_weight="0.7">
 
             <ImageView
+                android:id="@+id/iv_game_detail_icon"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:src="@drawable/wild_rift_mobile_icon" />
 
             <TextView
+                android:id="@+id/tv_game_detail_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wild Rift"
@@ -74,19 +76,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_developer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Riot Games"
                 android:textColor="#38BAB8" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Riot Games"
-                android:textColor="#38BAB8" />
-
-            <TextView
+                android:id="@+id/tv_publisher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -94,6 +91,15 @@
                 android:textColor="#38BAB8" />
 
             <TextView
+                android:id="@+id/tv_release"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Riot Games"
+                android:textColor="#38BAB8" />
+
+            <TextView
+                android:id="@+id/tv_mode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

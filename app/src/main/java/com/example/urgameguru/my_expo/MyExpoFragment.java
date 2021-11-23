@@ -26,6 +26,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.urgameguru.game_detail.GameDetailActivity;
+import com.example.urgameguru.show_media.ShowImageAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,6 +41,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import com.example.urgameguru.R;
 import com.example.urgameguru.my_game_detail.MyGameDetailActivity;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,18 +70,14 @@ public class MyExpoFragment extends Fragment implements MyExpoRecyclerViewAdapte
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final LinearLayout ll_wild_rift = view.findViewById(R.id.ll_wild_rift);
-        ll_wild_rift.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), MyGameDetailActivity.class);
-            startActivity(intent);
-        });
-
-        TextView btAdd = view.findViewById(R.id.bt_add);
+        FloatingActionButton btAdd = view.findViewById(R.id.bt_add);
         btAdd.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), AddGameActivity.class);
             startActivity(intent);
         });
 
+        adapter = new MyExpoRecyclerViewAdapter(view.getContext());
+        adapter.setClickListener(MyExpoFragment.this);
 
         //query user game data
         databaseReference = FirebaseDatabase.getInstance("https://urgameguru-it5007-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
@@ -94,13 +94,17 @@ public class MyExpoFragment extends Fragment implements MyExpoRecyclerViewAdapte
                     user_games.add(game_name);
                 }
 
+                TextView num_games = view.findViewById(R.id.tv_num_games);
+                int n_games = user_games.size();
+                String N_GAMES = String.format("%d", n_games);
+                num_games.setText(N_GAMES);
+
                 // set up the RecyclerView
                 RecyclerView recyclerView = view.findViewById(R.id.rv_my_games);
                 int numberOfColumns = 2;
                 recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), numberOfColumns));
 
-                adapter = new MyExpoRecyclerViewAdapter(view.getContext(), user_games);
-                adapter.setClickListener(MyExpoFragment.this);
+                adapter.mData = user_games;
                 recyclerView.setAdapter(adapter);
 
             }
