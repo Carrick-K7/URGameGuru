@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.urgameguru.R;
-import com.example.urgameguru.article_list.ArticleListActivity;
+import com.example.urgameguru.show_article.ShowArticleActivity;
 import com.example.urgameguru.comment_list.CommentListActivity;
 
 public class GameDetailActivity extends Activity {
@@ -25,7 +25,7 @@ public class GameDetailActivity extends Activity {
 
         TextView tvMoreArticles = findViewById(R.id.more_articles_all);
         tvMoreArticles.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ArticleListActivity.class);
+            Intent intent = new Intent(this, ShowArticleActivity.class);
             startActivity(intent);
         });
     }

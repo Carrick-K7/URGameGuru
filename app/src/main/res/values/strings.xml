@@ -151,4 +151,6 @@
     <string name="label_select_video">Select Video</string>
     <string name="label_select">Select image / video</string>
     <string name="label_name">Name</string>
+    <string name="hint_add_title">Add a title</string>
+    <string name="label_edit">Edit</string>
 </resources>

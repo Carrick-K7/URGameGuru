@@ -5,17 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
 import com.example.urgameguru.R;
-import com.example.urgameguru.add_article.AddArticleActivity;
+import com.example.urgameguru.add_article.ArticlePageActivity;
 import com.example.urgameguru.show_media.ShowImageActivity;
-import com.example.urgameguru.article_list.ArticleListActivity;
+import com.example.urgameguru.show_article.ShowArticleActivity;
 import com.example.urgameguru.game_detail.GameDetailActivity;
 import com.example.urgameguru.show_media.ShowVideoActivity;
 import com.example.urgameguru.upload_media.UploadMediaActivity;
@@ -33,22 +29,22 @@ public class MyGameDetailActivity extends Activity {
             }
         });
 
-        findViewById(R.id.add_articles).setOnClickListener(v -> {
-            Intent intent = new Intent(this, AddArticleActivity.class);
+        findViewById(R.id.tv_add_article).setOnClickListener(v -> {
+            Intent intent = new Intent(this, ArticlePageActivity.class);
             startActivity(intent);
         });
 
-        findViewById(R.id.wild_rift_title).setOnClickListener(v -> {
+        findViewById(R.id.ll_game_title).setOnClickListener(v -> {
             Intent intent = new Intent(this, GameDetailActivity.class);
             startActivity(intent);
         });
 
-        findViewById(R.id.more_articles).setOnClickListener(v -> {
-            Intent intent = new Intent(this, ArticleListActivity.class);
+        findViewById(R.id.tv_more_articles).setOnClickListener(v -> {
+            Intent intent = new Intent(this, ShowArticleActivity.class);
             startActivity(intent);
         });
 
-        findViewById(R.id.add_media).setOnClickListener(v -> {
+        findViewById(R.id.tv_add_media).setOnClickListener(v -> {
             Intent intent = new Intent(this, UploadMediaActivity.class);
             startActivity(intent);
         });
@@ -62,6 +58,7 @@ public class MyGameDetailActivity extends Activity {
             Intent intent = new Intent(this, ShowVideoActivity.class);
             startActivity(intent);
         });
+
 
     }
 

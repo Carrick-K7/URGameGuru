@@ -4,9 +4,7 @@ public class Media {
     private String mediaName;
     private String mediaUri;
 
-    private Media() {
-
-    }
+    private Media() {}
 
     public String getMediaName() {
         return mediaName;

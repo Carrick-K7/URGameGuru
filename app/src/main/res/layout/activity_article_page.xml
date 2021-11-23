@@ -12,10 +12,15 @@
         app:popupTheme="@style/Widget.AppCompat.Light.PopupMenu.Overflow">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_article_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/teal_300"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:background="@color/white"
-            android:hint="Add a title" />
+            android:hint="@string/hint_add_title" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -276,33 +281,34 @@
     <jp.wasabeef.richeditor.RichEditor
         android:id="@+id/editor"
         android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:id="@+id/tv_preview"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/save"
+        android:id="@+id/bt_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/save"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/exit"
+        android:id="@+id/bt_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/exit" />
+        android:text="@string/label_edit"
+        android:visibility="invisible"/>
 
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:text="HTML Preview"-->
-<!--        android:textSize="12sp" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/preview"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="15dp" />-->
+    <ProgressBar
+        android:id="@+id/pb_article_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"/>
 
 </LinearLayout>

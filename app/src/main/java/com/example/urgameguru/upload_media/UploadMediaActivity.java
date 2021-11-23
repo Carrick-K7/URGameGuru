@@ -144,15 +144,16 @@ public class UploadMediaActivity extends AppCompatActivity {
 
             UploadTask uploadTask = uploadRef.putFile(uploadUri);
             uploadTask.addOnSuccessListener(taskSnapshot -> {
+                uploadRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
+                    Media media = new Media(mediaName, downloadUri.toString());
+                    String dbUploadPath = typeStr + "/" + user.getUid() + "/" + uuid;
+                    databaseRef.child(dbUploadPath).setValue(media);
 
-                Media media = new Media(mediaName, taskSnapshot.getUploadSessionUri().toString());
-                String dbUploadPath = typeStr + "/" + user.getUid() + "/" + uuid;
-                databaseRef.child(dbUploadPath).setValue(media);
+                    pbUpload.setVisibility(View.INVISIBLE);
+                    Toast.makeText(this, "Upload " + typeStr + " success!", Toast.LENGTH_SHORT).show();
 
-                pbUpload.setVisibility(View.INVISIBLE);
-                Toast.makeText(this, "Upload " + typeStr + " success!", Toast.LENGTH_SHORT).show();
-
-                finish();
+                    finish();
+                });
             }).addOnFailureListener( e -> {
                 Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             });
