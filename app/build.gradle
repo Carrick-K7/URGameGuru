@@ -30,6 +30,12 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+}
+
+configurations {
+    cleanedAnnotations
+    implementation.exclude group: 'org.jetbrains' , module:'annotations'
 }
 
 dependencies {

@@ -33,6 +33,7 @@ public class ShowVideoAdapter extends RecyclerView.Adapter<ShowVideoAdapter.View
     private final List<StorageReference> mData;
     private final LayoutInflater mInflater;
     private final Context mContext;
+
     private ItemClickListener mClickListener;
     private PlayerView mPlayerView;
 

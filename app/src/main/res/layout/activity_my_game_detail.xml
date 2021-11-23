@@ -16,7 +16,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/wild_rift_title"
+            android:id="@+id/ll_game_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -138,7 +138,7 @@
             android:layout_weight="1"/>
 
         <ImageView
-            android:id="@+id/add_media"
+            android:id="@+id/tv_add_media"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/add_black"
@@ -207,7 +207,7 @@
             android:layout_weight="1"/>
 
         <ImageView
-            android:id="@+id/add_articles"
+            android:id="@+id/tv_add_article"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/add_black"
@@ -330,7 +330,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/more_articles"
+        android:id="@+id/tv_more_articles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="more.."
