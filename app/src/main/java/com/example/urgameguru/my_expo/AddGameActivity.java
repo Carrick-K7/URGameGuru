@@ -54,10 +54,9 @@ public class AddGameActivity extends AppCompatActivity {
             ValueEventListener eventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.child(name).exists()) {
-                        UserGame user_game = new UserGame(0, 0, 0);
+                    if(name != "" && dataSnapshot.child(name).exists()) {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        mDatabase.child("user_games").child(user.getUid()).child(name).setValue(user_game);
+                        mDatabase.child("user_games").child(user.getUid()).child(name).setValue(true);
                         finish();
                     }
                     else {
