@@ -78,6 +78,7 @@ public class ShowArticleActivity extends AppCompatActivity implements ShowReview
         userReviewQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                articleList.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     Article article = dataSnapshot.getValue(Article.class);
                     articleList.add(article);
