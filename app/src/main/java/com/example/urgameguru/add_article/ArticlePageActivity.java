@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import jp.wasabeef.richeditor.RichEditor;
 
 import com.example.urgameguru.R;
 import com.example.urgameguru.bean.Article;
+import com.example.urgameguru.utils.GlideApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -53,6 +55,7 @@ public class ArticlePageActivity extends Activity {
     ProgressBar pbSave;
 
     String articleType, articleStr;
+    String uri, articleName;
     String gameName;
 
     @Override
@@ -62,7 +65,7 @@ public class ArticlePageActivity extends Activity {
 
         etArticleName = findViewById(R.id.et_article_name);
         mEditor = findViewById(R.id.editor);
-        mPreview = findViewById(R.id.tv_preview);
+//        mPreview = findViewById(R.id.tv_preview);
         btEdit = findViewById(R.id.bt_edit);
         btSave = findViewById(R.id.bt_save);
         pbSave = findViewById(R.id.pb_article_save);
@@ -70,42 +73,16 @@ public class ArticlePageActivity extends Activity {
         setUpEditor();
 
         Intent intent = getIntent();
-        String uri = intent.getStringExtra("articleUri");
-        String name = intent.getStringExtra("articleName");
-        if (uri != null) {
-            ExecutorService executor = Executors.newSingleThreadExecutor();
-            Handler handler = new Handler(Looper.getMainLooper());
+        gameName = intent.getStringExtra("name");
+        uri = intent.getStringExtra("articleUri");
+        articleName = intent.getStringExtra("articleName");
 
-            executor.execute(() -> {
-                try {
-                    URL url = new URL(uri);
-                    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-                    String str;
-                    StringBuilder stringBuilder = new StringBuilder();
-                    while ((str = in.readLine()) != null) {
-                        stringBuilder.append(str);
-                    }
-                    articleStr = stringBuilder.toString();
-                    Log.d(TAG, articleStr);
-                    in.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                handler.post(() -> {
-                    etArticleName.setText(name);
-                    mEditor.setHtml(articleStr);
-                    mEditor.setInputEnabled(false);
-                    btEdit.setVisibility(View.VISIBLE);
-                });
-            });
-
-        }
+        if (uri != null) { getArticle(uri, articleName); };
+        setUpIcon();
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         storageRef = FirebaseStorage.getInstance().getReference();
         databaseRef = FirebaseDatabase.getInstance("https://urgameguru-it5007-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-        gameName = "Wild Rift";
         articleType = "review";
 
         btSave.setOnClickListener(v -> {
@@ -138,13 +115,53 @@ public class ArticlePageActivity extends Activity {
 
     }
 
+    private void setUpIcon() {
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+        String ImagePath = "icon/" + gameName;
+        StorageReference imageRef = storageRef.child(ImagePath);
+
+        ImageView icon = findViewById(R.id.iv_game_icon);
+        GlideApp.with(this)
+                .load(imageRef)
+                .into(icon);
+    }
+
+    private void getArticle(String uri, String gameName) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        executor.execute(() -> {
+            try {
+                URL url = new URL(uri);
+                BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+                String str;
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((str = in.readLine()) != null) {
+                    stringBuilder.append(str);
+                }
+                articleStr = stringBuilder.toString();
+                Log.d(TAG, articleStr);
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            handler.post(() -> {
+                etArticleName.setText(gameName);
+                mEditor.setHtml(articleStr);
+                mEditor.setInputEnabled(false);
+                btEdit.setVisibility(View.VISIBLE);
+            });
+        });
+    }
+
     public void setUpEditor() {
         mEditor.setEditorFontSize(22);
         mEditor.setEditorFontColor(Color.BLACK);
         mEditor.setPadding(10, 10, 10, 10);
         mEditor.setPlaceholder("Insert text here...");
 
-        mEditor.setOnTextChangeListener(text -> mPreview.setText(text));
+//        mEditor.setOnTextChangeListener(text -> mPreview.setText(text));
 
         findViewById(R.id.action_undo).setOnClickListener(v -> mEditor.undo());
         findViewById(R.id.action_redo).setOnClickListener(v -> mEditor.redo());

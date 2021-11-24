@@ -8,7 +8,10 @@
         android:id="@+id/pv_item"
         android:layout_width="match_parent"
         android:layout_height="230dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:use_controller="true"
         app:resize_mode="fill"/>
 </LinearLayout>

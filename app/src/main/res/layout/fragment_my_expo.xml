@@ -123,7 +123,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="10"
+                    android:text="@string/number_zero"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -171,10 +171,7 @@
                     android:id="@+id/rv_my_games"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp" />
+                    android:layout_margin="20dp"/>
 
             </LinearLayout>
 
@@ -187,11 +184,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="end|bottom"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/label_add"
         app:srcCompat="@android:drawable/ic_input_add"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

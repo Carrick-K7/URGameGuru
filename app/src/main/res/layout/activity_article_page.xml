@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.circularreveal.CircularRevealRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:popupTheme="@style/Widget.AppCompat.Light.PopupMenu.Overflow">
+        android:padding="10dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_game_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_article_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:background="@color/white"
+            android:hint="@string/hint_add_title"
             android:textColor="@color/teal_300"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:background="@color/white"
-            android:hint="@string/hint_add_title" />
+            android:layout_centerInParent="true"/>
 
-    </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -284,17 +291,10 @@
         android:layout_height="200dp"
         android:layout_marginTop="50dp" />
 
-    <TextView
-        android:id="@+id/tv_preview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/bt_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/save"/>
+<!--    <TextView-->
+<!--        android:id="@+id/tv_preview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content" />-->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_edit"
@@ -304,6 +304,13 @@
         android:text="@string/label_edit"
         android:visibility="invisible"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/save"/>
+
     <ProgressBar
         android:id="@+id/pb_article_save"
         android:layout_width="wrap_content"
@@ -311,4 +318,4 @@
         android:layout_marginTop="20dp"
         android:visibility="invisible"/>
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

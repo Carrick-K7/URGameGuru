@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.urgameguru">
+    package="com.example.urgameguru" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.URGameGuru">
+        android:theme="@style/Theme.URGameGuru" >
         <activity
             android:name=".add_article.ArticlePageActivity"
             android:exported="false" />
@@ -32,7 +33,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="@string/title_login_activity">
+            android:label="@string/title_login_activity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,8 +56,6 @@
         <activity android:name=".game_detail.GameDetailActivity" />
         <activity android:name=".media_gallery.MediaGalleryActivity" />
         <activity android:name=".show_media.ShowVideoActivity" />
-
     </application>
-
 
 </manifest>

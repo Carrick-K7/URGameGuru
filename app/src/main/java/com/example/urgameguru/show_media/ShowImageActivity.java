@@ -26,11 +26,14 @@ public class ShowImageActivity extends AppCompatActivity implements ShowImageAda
     ShowImageAdapter adapter;
     RecyclerView recyclerView;
 
+    String gameName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_image);
+
+        gameName = getIntent().getStringExtra("name");
 
         setUpRV();
         getImageListFromFB();
@@ -50,7 +53,7 @@ public class ShowImageActivity extends AppCompatActivity implements ShowImageAda
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        String userImagePath = "image/" + user.getUid();
+        String userImagePath = "image/" + gameName + "/" + user.getUid();
         Log.d(TAG, userImagePath);
         StorageReference imageRef = storageRef.child(userImagePath);
 

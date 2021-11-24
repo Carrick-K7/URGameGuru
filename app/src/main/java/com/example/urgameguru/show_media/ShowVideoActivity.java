@@ -26,11 +26,14 @@ public class ShowVideoActivity extends AppCompatActivity implements ShowVideoAda
     ShowVideoAdapter adapter;
     RecyclerView recyclerView;
 
+    String gameName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_video);
+
+        gameName = getIntent().getStringExtra("name");
 
         setUpRV();
         getVideoListFromFB();
@@ -50,7 +53,7 @@ public class ShowVideoActivity extends AppCompatActivity implements ShowVideoAda
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        String userVideoPath = "video/" + user.getUid();
+        String userVideoPath = "video/" + gameName + "/" + user.getUid();
         StorageReference videoRef = storageRef.child(userVideoPath);
 
         videoRef.listAll().addOnSuccessListener(listResult -> {
