@@ -163,7 +163,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/tv_screenshot_list"
+            android:id="@+id/bt_screenshot_list"
             android:layout_width="0dp"
             android:layout_height="75dp"
             android:layout_weight="1"
@@ -171,7 +171,7 @@
             android:gravity="center" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/tv_clip_list"
+            android:id="@+id/bt_clip_list"
             android:layout_width="0dp"
             android:layout_height="75dp"
             android:text="@string/label_clips"
@@ -179,21 +179,6 @@
             android:layout_weight="1"
             android:layout_marginStart="20dp"/>
 
-<!--        <TextView-->
-<!--            android:layout_width="90dp"-->
-<!--            android:layout_height="75dp"-->
-<!--            android:text="screenshot1"-->
-<!--            android:background="#C4C4C4"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_marginLeft="5dp"/>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="90dp"-->
-<!--            android:layout_height="75dp"-->
-<!--            android:text="screenshot1"-->
-<!--            android:background="#C4C4C4"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_marginLeft="5dp"/>-->
 
     </LinearLayout>
 
@@ -221,127 +206,14 @@
 
     </LinearLayout>
 
-    <LinearLayout
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_article_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:paddingTop="10dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· Game review 1"
-                android:textSize="14dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· Game review 2"
-                android:textSize="14dp"
-                android:paddingTop="5dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:paddingTop="10dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· Game guide 1"
-                android:textSize="14dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· Game guide 2"
-                android:textSize="14dp"
-                android:paddingTop="5dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· Game guide 3"
-                android:textSize="14dp"
-                android:paddingTop="5dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:paddingTop="10dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· Game thought 1"
-                android:textSize="14dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· Game thought 2"
-                android:textSize="14dp"
-                android:paddingTop="5dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="· Game thought 3"
-                android:textSize="14dp"
-                android:paddingTop="5dp"
-                android:textColor="#38BAB8"
-                android:maxLines="1"
-                android:ellipsize="end"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_more_articles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="more.."
-        android:textColor="#38BAB8"
-        android:layout_gravity="end"
+        android:layout_height="75dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
-        android:paddingEnd="20dp"/>
+        android:text="@string/label_articles" />
 
 </LinearLayout>

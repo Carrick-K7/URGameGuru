@@ -9,10 +9,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.urgameguru.R;
 import com.example.urgameguru.add_article.ArticlePageActivity;
 import com.example.urgameguru.bean.Article;
+import com.example.urgameguru.utils.GlideApp;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +38,7 @@ public class ShowArticleActivity extends AppCompatActivity implements ShowReview
 
     ShowReviewAdapter adapter;
     RecyclerView recyclerView;
+    TextView tvGameName;
 
     String gameName;
 
@@ -42,8 +49,15 @@ public class ShowArticleActivity extends AppCompatActivity implements ShowReview
         setContentView(R.layout.activity_show_article);
 
         articleList = new ArrayList<>();
-        gameName = "Wild Rift";
+        gameName = getIntent().getStringExtra("name");
 
+        findViewById(R.id.fab_add_article).setOnClickListener(v -> {
+            Intent intent = new Intent(this, ArticlePageActivity.class);
+            intent.putExtra("name",gameName);
+            startActivity(intent);
+        });
+
+        setUpTitle(gameName);
         setUpRV();
         getReviewListFromFB();
 
@@ -51,13 +65,32 @@ public class ShowArticleActivity extends AppCompatActivity implements ShowReview
 
     @Override
     public void onItemClick(View v, int position) {
-        // TODO add article data;
         Intent intent = new Intent(this, ArticlePageActivity.class);
         Article article = adapter.getItem(position);
+        intent.putExtra("name", gameName);
         intent.putExtra("articleUri", article.getArticleUri());
         intent.putExtra("articleName", article.getArticleName());
         startActivity(intent);
+    }
 
+    private void setUpTitle(String gameName) {
+        tvGameName = findViewById(R.id.tv_show_article_game_name);
+        tvGameName.setText(gameName);
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        String ImagePath = "icon/" + gameName;
+        StorageReference imageRef = storageRef.child(ImagePath);
+
+        ImageView icon = findViewById(R.id.iv_show_article_icon);
+        imageRef.getMetadata().addOnSuccessListener(storageMetadata -> {
+            String type = storageMetadata.getContentType();
+            if (type.startsWith("image")) {
+                GlideApp.with(this)
+                        .load(imageRef)
+                        .into(icon);
+            }
+        });
     }
 
     private void setUpRV() {

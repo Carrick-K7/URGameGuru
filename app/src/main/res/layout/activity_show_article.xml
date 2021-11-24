@@ -1,77 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.URGameGuru.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:theme="@style/Theme.URGameGuru.AppBarOverlay">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_wild_rift">
-
-            </androidx.appcompat.widget.AppCompatImageView>
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:minHeight="?actionBarSize"
-                android:padding="@dimen/appbar_padding"
-                android:text="@string/tmp_wild_rift"
-                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+                android:gravity="center">
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_show_article_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_wild_rift">
 
-    </com.google.android.material.appbar.AppBarLayout>
+                </androidx.appcompat.widget.AppCompatImageView>
+                <TextView
+                    android:id="@+id/tv_show_article_game_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:minHeight="?actionBarSize"
+                    android:padding="@dimen/appbar_padding"
+                    android:text="@string/tmp_wild_rift"
+                    android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
 
-<!--    <com.google.android.material.tabs.TabLayout-->
-<!--        android:id="@+id/tabs"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        tools:ignore="SpeakableTextPresentCheck">-->
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/game_review"/>-->
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/game_guide"/>-->
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/game_thought"/>-->
-
-<!--    </com.google.android.material.tabs.TabLayout>-->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_review"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_add_article"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:contentDescription="@string/label_add"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="SpeakableTextPresentCheck" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

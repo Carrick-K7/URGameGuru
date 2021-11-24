@@ -7,17 +7,6 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/image_exit"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/ic_baseline_clear_green_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_login"
         android:layout_width="90dp"
         android:layout_height="90dp"
@@ -36,7 +25,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="30dp"
         android:drawableStart="@drawable/ic_baseline_person_green_24"
-        android:hint="Username"
+        android:hint="@string/hint_user_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +39,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="30dp"
         android:drawableStart="@drawable/ic_baseline_lock_green_24"
-        android:hint="Password"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="256dp"
-        android:text="Sign Up"
+        android:text="@string/label_sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
@@ -72,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="72dp"
-        android:text="Log in"
+        android:text="@string/label_log_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 

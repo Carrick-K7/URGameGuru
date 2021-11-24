@@ -46,7 +46,7 @@ public class UploadMediaActivity extends AppCompatActivity {
 
     ActivityResultLauncher<Intent> activityResultLauncher;
     Uri uploadUri;
-    String mediaName;
+    String gameName, mediaName;
     String mimetype, typeStr, fileExt;
     String uuid;
 
@@ -64,6 +64,8 @@ public class UploadMediaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_media);
 
+        gameName = getIntent().getStringExtra("name");
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         storageRef = FirebaseStorage.getInstance().getReference();
         databaseRef = FirebaseDatabase.getInstance("https://urgameguru-it5007-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
@@ -72,6 +74,8 @@ public class UploadMediaActivity extends AppCompatActivity {
 
         etMediaName = findViewById(R.id.et_media_name);
         pbUpload = findViewById(R.id.pb_upload);
+        pvPreview = findViewById(R.id.pv_upload_preview);
+        ivPreview = findViewById(R.id.iv_upload_preview);
 
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == Activity.RESULT_OK) {
@@ -79,17 +83,16 @@ public class UploadMediaActivity extends AppCompatActivity {
                 assert data != null;
                 uploadUri = data.getData();
 
-                mediaName = etMediaName.getText().toString().trim();
                 MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
                 mimetype = cr.getType(uploadUri);
                 typeStr =  mimetype.substring(0, mimetype.indexOf("/"));
                 fileExt = mimeTypeMap.getExtensionFromMimeType(mimetype);
                 Log.d(TAG, mimetype);
 
-                pvPreview = findViewById(R.id.pv_upload_preview);
                 ViewGroup.LayoutParams pvParams = pvPreview.getLayoutParams();
-                ivPreview = findViewById(R.id.iv_upload_preview);
                 ViewGroup.LayoutParams ivParams = ivPreview.getLayoutParams();
+
+                etMediaName.setText("");
 
                 if(typeStr.equals("image")) {
                     pvPreview.setVisibility(View.INVISIBLE);
@@ -137,7 +140,7 @@ public class UploadMediaActivity extends AppCompatActivity {
             pbUpload.setVisibility(View.VISIBLE);
 
             uuid = UUID.randomUUID().toString();
-            String storageUploadPath = typeStr + "/" + user.getUid() + "/" + uuid + "-" + mediaName + "." + fileExt;
+            String storageUploadPath = typeStr + "/" + gameName + "/" + user.getUid() + "/" + uuid + "-" + mediaName + "." + fileExt;
             Log.d(TAG, storageUploadPath);
 
             StorageReference uploadRef = storageRef.child(storageUploadPath);
@@ -145,8 +148,10 @@ public class UploadMediaActivity extends AppCompatActivity {
             UploadTask uploadTask = uploadRef.putFile(uploadUri);
             uploadTask.addOnSuccessListener(taskSnapshot -> {
                 uploadRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
+                    mediaName = etMediaName.getText().toString().trim();
+
                     Media media = new Media(mediaName, downloadUri.toString());
-                    String dbUploadPath = typeStr + "/" + user.getUid() + "/" + uuid;
+                    String dbUploadPath = typeStr + "/" + gameName + "/" + user.getUid() + "/" + uuid;
                     databaseRef.child(dbUploadPath).setValue(media);
 
                     pbUpload.setVisibility(View.INVISIBLE);

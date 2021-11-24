@@ -50,6 +50,7 @@ public class MyGameDetailActivity extends Activity {
 
         findViewById(R.id.tv_add_article).setOnClickListener(v -> {
             Intent intent = new Intent(this, ArticlePageActivity.class);
+            intent.putExtra("name", name);
             startActivity(intent);
         });
 
@@ -59,40 +60,38 @@ public class MyGameDetailActivity extends Activity {
             startActivity(intent);
         });
 
-        findViewById(R.id.tv_more_articles).setOnClickListener(v -> {
+        findViewById(R.id.bt_article_list).setOnClickListener(v -> {
             Intent intent = new Intent(this, ShowArticleActivity.class);
+            intent.putExtra("name", name);
             startActivity(intent);
         });
 
         findViewById(R.id.tv_add_media).setOnClickListener(v -> {
             Intent intent = new Intent(this, UploadMediaActivity.class);
+            intent.putExtra("name", name);
             startActivity(intent);
         });
 
-        findViewById(R.id.tv_screenshot_list).setOnClickListener(v -> {
+        findViewById(R.id.bt_screenshot_list).setOnClickListener(v -> {
             Intent intent = new Intent(this, ShowImageActivity.class);
+            intent.putExtra("name", name);
             startActivity(intent);
         });
 
-        findViewById(R.id.tv_clip_list).setOnClickListener(v -> {
+        findViewById(R.id.bt_clip_list).setOnClickListener(v -> {
             Intent intent = new Intent(this, ShowVideoActivity.class);
+            intent.putExtra("name", name);
             startActivity(intent);
         });
 
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         String ImagePath = "icon/" + name;
         StorageReference imageRef = storageRef.child(ImagePath);
 
         ImageView icon = findViewById(R.id.iv_my_game_detail_icon);
-        imageRef.getMetadata().addOnSuccessListener(storageMetadata -> {
-            String type = storageMetadata.getContentType();
-            if (type.startsWith("image")) {
-                GlideApp.with(this)
-                        .load(imageRef)
-                        .into(icon);
-            }
-        });
+        GlideApp.with(this)
+                .load(imageRef)
+                .into(icon);
 
         TextView game_name = findViewById(R.id.tv_my_game_detail_name);
         game_name.setText(name);
