@@ -91,7 +91,7 @@ public class MyExpoFragment extends Fragment implements MyExpoRecyclerViewAdapte
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     String game_name = postSnapshot.getKey();
-                    user_games.add(game_name);
+                    if(!user_games.contains(game_name)) user_games.add(game_name);
                 }
 
                 TextView num_games = view.findViewById(R.id.tv_num_games);

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_most_popular_1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="10dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_most_popular_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_1"
+            android:textColor="@color/bronze"
+            android:textSize="20sp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_most_popular_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/ic_wild_rift" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_most_popular_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/tmp_wild_rift"
+            android:textColor="@color/bronze"
+            android:textSize="15sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</com.google.android.material.card.MaterialCardView>

@@ -54,9 +54,17 @@ public class AddGameActivity extends AppCompatActivity {
             ValueEventListener eventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(name != "" && dataSnapshot.child(name).exists()) {
+                    if(name.equals("") || name.contains(".") || name.contains("$") || name.contains("#") || name.contains("[") || name.contains("]") || name.contains("/")) {
+                        Toast.makeText(v.getContext(), "Invalid input!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(dataSnapshot.child(name).exists()) {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        //add the game into user's games
                         mDatabase.child("user_games").child(user.getUid()).child(name).setValue(true);
+                        //increment the number of users of that game by 1
+                        Map<String, Object> updates = new HashMap<>();
+                        updates.put("num_users", ServerValue.increment(1));
+                        mDatabase.child("games").child(name).updateChildren(updates);
                         finish();
                     }
                     else {
