@@ -43,19 +43,6 @@ public class ShowImageActivity extends AppCompatActivity implements ShowImageAda
 
         setUpRV();
         getImageListFromFB();
-
-        FirstDrawListener.registerFirstDrawListener(mainView, new FirstDrawListener.OnFirstDrawCallback() {
-            @Override
-            public void onDrawingStart() {
-                // In practice you can also record this event separately
-            }
-
-            @Override
-            public void onDrawingFinish() {
-                // This is when the Activity UI is completely drawn on the screen
-                viewLoadTrace.stop();
-            }
-        });
     }
 
     @Override
@@ -88,6 +75,7 @@ public class ShowImageActivity extends AppCompatActivity implements ShowImageAda
             adapter = new ShowImageAdapter(this, imageList);
             adapter.setClickListener(this);
             recyclerView.setAdapter(adapter);
+            viewLoadTrace.stop();
         });
     }
 }
