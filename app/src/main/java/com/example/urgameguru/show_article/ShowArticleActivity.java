@@ -70,6 +70,7 @@ public class ShowArticleActivity extends AppCompatActivity implements ShowReview
         intent.putExtra("name", gameName);
         intent.putExtra("articleUri", article.getArticleUri());
         intent.putExtra("articleName", article.getArticleName());
+        intent.putExtra("userName", article.getUserName());
         startActivity(intent);
     }
 

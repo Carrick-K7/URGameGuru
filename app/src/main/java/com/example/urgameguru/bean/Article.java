@@ -1,10 +1,20 @@
 package com.example.urgameguru.bean;
 
+import com.example.urgameguru.game_detail.ArticleAdapter;
+
 public class Article {
     private String articleName;
     private String articleUri;
+    private String userName;
 
-    private Article() {}
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
 
     public String getArticleName() {
         return articleName;
@@ -22,12 +32,15 @@ public class Article {
         this.articleUri = articleUri;
     }
 
-    public Article(String name, String uri) {
+    private Article() {}
+
+    public Article(String name, String uri, String user_name) {
         if (name.trim().equals("")) {
             name = "No Title";
         }
 
         articleName = name;
         articleUri = uri;
+        userName = user_name;
     }
 }

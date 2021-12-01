@@ -1,36 +1,32 @@
-package com.example.urgameguru.show_article;
+package com.example.urgameguru.game_detail;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.urgameguru.R;
 import com.example.urgameguru.bean.Article;
-import com.google.firebase.storage.StorageReference;
+import com.example.urgameguru.show_article.ShowReviewAdapter;
 
 import java.util.List;
 
-public class ShowReviewAdapter extends RecyclerView.Adapter<ShowReviewAdapter.ViewHolder> {
+public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
 
-    private static final String TAG = "showReviewAdapter";
+    private static final String TAG = "articleAdapter";
 
     private final List<Article> mData;
     private final LayoutInflater mInflater;
     private final Context mContext;
 
-    private ItemClickListener mClickListener;
-    private TextView mArticleName;
+    private ArticleAdapter.ItemClickListener mClickListener;
+    private TextView tvArticleName, tvUserName;
 
-    ShowReviewAdapter(Context context, List<Article> data) {
+    ArticleAdapter(Context context, List<Article> data) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
@@ -50,17 +46,18 @@ public class ShowReviewAdapter extends RecyclerView.Adapter<ShowReviewAdapter.Vi
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.viewholder_review, parent, false);
+    public ArticleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = mInflater.inflate(R.layout.viewholder_review_game_detail, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ShowReviewAdapter.ViewHolder holder, int position) {
-        mArticleName = holder.itemView.findViewById(R.id.tv_item);
+    public void onBindViewHolder(@NonNull ArticleAdapter.ViewHolder holder, int position) {
+        tvArticleName = holder.itemView.findViewById(R.id.tv_review_name);
+        tvUserName = holder.itemView.findViewById(R.id.tv_review_user_name);
         Article article = mData.get(position);
-        Log.d(TAG, article.toString());
-        mArticleName.setText(article.getArticleName());
+        tvArticleName.setText(article.getArticleName());
+        tvUserName.setText(article.getUserName());
     }
 
     @Override
@@ -72,7 +69,7 @@ public class ShowReviewAdapter extends RecyclerView.Adapter<ShowReviewAdapter.Vi
         return mData.get(id);
     }
 
-    void setClickListener(ItemClickListener itemClickListener) {
+    void setClickListener(ArticleAdapter.ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
@@ -80,4 +77,6 @@ public class ShowReviewAdapter extends RecyclerView.Adapter<ShowReviewAdapter.Vi
         void onItemClick(View v, int position);
     }
 
+
+    
 }

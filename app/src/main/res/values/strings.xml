@@ -163,4 +163,11 @@
     <string name="hint_password">Password</string>
     <string name="label_sign_up">Sign up</string>
     <string name="label_log_in">Log in</string>
+    <string name="comment_text">Comment text</string>
+    <string name="label_add_comment">Add comment</string>
+    <string name="label_my_comment">My comment</string>
+    <string name="label_submit">Submit</string>
+    <string name="game_name">Game name</string>
+    <string name="hint_rate">Rate (0~5)</string>
+    <string name="label_comment_date">31-03-2020</string>
 </resources>
