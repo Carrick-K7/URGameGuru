@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".upload_media.UploadMediaActivity">
+    tools:context=".activity.UploadMediaActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_select"
