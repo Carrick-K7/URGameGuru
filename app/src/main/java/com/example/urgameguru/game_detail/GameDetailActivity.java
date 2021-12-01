@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.urgameguru.FirstDrawListener;
 import com.example.urgameguru.R;
 import com.example.urgameguru.add_article.ArticlePageActivity;
 import com.example.urgameguru.add_comment.AddCommentActivity;
@@ -30,6 +31,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -57,11 +60,14 @@ public class GameDetailActivity extends Activity implements ArticleAdapter.ItemC
     double rating;
     String name;
 
+    private final Trace viewLoadTrace = FirebasePerformance.startTrace("GameDetailActivity-LoadTime");
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_detail);
 
+        View mainView = findViewById(android.R.id.content);
         mDatabase = FirebaseDatabase.getInstance("https://urgameguru-it5007-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
         name = getIntent().getStringExtra("name");
 
@@ -95,7 +101,18 @@ public class GameDetailActivity extends Activity implements ArticleAdapter.ItemC
         getCommentListFromFB(name);
         getArticleListFromFB(name);
 
+        FirstDrawListener.registerFirstDrawListener(mainView, new FirstDrawListener.OnFirstDrawCallback() {
+            @Override
+            public void onDrawingStart() {
+                // In practice you can also record this event separately
+            }
 
+            @Override
+            public void onDrawingFinish() {
+                // This is when the Activity UI is completely drawn on the screen
+                viewLoadTrace.stop();
+            }
+        });
     }
 
     @Override

@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.urgameguru.FirstDrawListener;
 import com.example.urgameguru.game_detail.GameDetailActivity;
 import com.example.urgameguru.show_media.ShowImageAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,6 +42,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import com.example.urgameguru.R;
 import com.example.urgameguru.my_game_detail.MyGameDetailActivity;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -50,6 +53,7 @@ import java.util.List;
 public class MyExpoFragment extends Fragment implements MyExpoRecyclerViewAdapter.ItemClickListener{
 
     MyExpoRecyclerViewAdapter adapter;
+    private Trace fragmentLoadTrace;
 
     private static final String TAG = "MyExpoActivity";
 
@@ -57,6 +61,14 @@ public class MyExpoFragment extends Fragment implements MyExpoRecyclerViewAdapte
     private Query query_user_games;
 
     private ValueEventListener mMessagesListener;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        // TODO (2): Start trace recording as soon as the Fragment is attached to its host Activity.
+        fragmentLoadTrace = FirebasePerformance.startTrace("MyExpoFragment-LoadTime");
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -116,6 +128,20 @@ public class MyExpoFragment extends Fragment implements MyExpoRecyclerViewAdapte
             }
         };
         query_user_games.addValueEventListener(eventListener);
+
+        FirstDrawListener.registerFirstDrawListener(view, new FirstDrawListener.OnFirstDrawCallback() {
+
+            @Override
+            public void onDrawingStart() {
+                // In practice you can also record this event separately
+            }
+
+            @Override
+            public void onDrawingFinish() {
+                // This is when the Fragment UI is completely drawn on the screen
+                fragmentLoadTrace.stop();
+            }
+        });
     }
 
     @Override

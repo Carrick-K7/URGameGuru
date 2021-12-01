@@ -9,9 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.urgameguru.FirstDrawListener;
 import com.example.urgameguru.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -28,15 +31,31 @@ public class ShowImageActivity extends AppCompatActivity implements ShowImageAda
 
     String gameName;
 
+    private final Trace viewLoadTrace = FirebasePerformance.startTrace("ShowImageActivity-LoadTime");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_image);
 
+        View mainView = findViewById(android.R.id.content);
         gameName = getIntent().getStringExtra("name");
 
         setUpRV();
         getImageListFromFB();
+
+        FirstDrawListener.registerFirstDrawListener(mainView, new FirstDrawListener.OnFirstDrawCallback() {
+            @Override
+            public void onDrawingStart() {
+                // In practice you can also record this event separately
+            }
+
+            @Override
+            public void onDrawingFinish() {
+                // This is when the Activity UI is completely drawn on the screen
+                viewLoadTrace.stop();
+            }
+        });
     }
 
     @Override

@@ -17,11 +17,15 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "UsernamePassword";
 
     private FirebaseAuth mAuth;
+    private final Trace viewLoadTrace = FirebasePerformance.startTrace("LoginActivity-LoadTime");
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
+        View mainView = findViewById(android.R.id.content);
         MaterialButton btSignUp = findViewById(R.id.sign_up);
         btSignUp.setOnClickListener(v -> {
             TextInputEditText et_username = findViewById(R.id.et_username);
@@ -52,6 +57,19 @@ public class LoginActivity extends AppCompatActivity {
             String password = et_password.getText().toString();
 
             this.signIn(username, password);
+        });
+
+        FirstDrawListener.registerFirstDrawListener(mainView, new FirstDrawListener.OnFirstDrawCallback() {
+            @Override
+            public void onDrawingStart() {
+                // In practice you can also record this event separately
+            }
+
+            @Override
+            public void onDrawingFinish() {
+                // This is when the Activity UI is completely drawn on the screen
+                viewLoadTrace.stop();
+            }
         });
     }
 

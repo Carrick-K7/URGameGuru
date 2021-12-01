@@ -30,6 +30,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -137,6 +139,8 @@ public class UploadMediaActivity extends AppCompatActivity {
 
         findViewById(R.id.bt_upload).setOnClickListener(v -> {
 
+            Trace myTrace = FirebasePerformance.getInstance().newTrace("UploadMedia_trace");
+            myTrace.start();
             pbUpload.setVisibility(View.VISIBLE);
 
             uuid = UUID.randomUUID().toString();
@@ -157,6 +161,7 @@ public class UploadMediaActivity extends AppCompatActivity {
                     pbUpload.setVisibility(View.INVISIBLE);
                     Toast.makeText(this, "Upload " + typeStr + " success!", Toast.LENGTH_SHORT).show();
 
+                    myTrace.stop();
                     finish();
                 });
             }).addOnFailureListener( e -> {

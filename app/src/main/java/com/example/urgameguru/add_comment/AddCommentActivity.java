@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
@@ -48,6 +50,9 @@ public class AddCommentActivity extends Activity {
         tvGameName.setText(gameName);
 
         btSubmit.setOnClickListener(v -> {
+            Trace myTrace = FirebasePerformance.getInstance().newTrace("AddComment_trace");
+            myTrace.start();
+
             databaseRef = FirebaseDatabase.getInstance("https://urgameguru-it5007-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
             user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -62,6 +67,7 @@ public class AddCommentActivity extends Activity {
 
             commentRef.setValue(comment).addOnSuccessListener(taskSnapshot -> {
                 Toast.makeText(this, "Submit comment success!", Toast.LENGTH_SHORT).show();
+                myTrace.stop();
                 finish();
             });
 

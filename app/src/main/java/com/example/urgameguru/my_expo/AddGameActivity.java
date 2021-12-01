@@ -34,6 +34,8 @@ import java.util.Map;
 import com.example.urgameguru.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 
 public class AddGameActivity extends AppCompatActivity {
 
@@ -62,6 +64,10 @@ public class AddGameActivity extends AppCompatActivity {
                         Toast.makeText(v.getContext(), "Invalid input!", Toast.LENGTH_SHORT).show();
                     }
                     else if(dataSnapshot.child(name).exists()) {
+
+                        Trace myTrace = FirebasePerformance.getInstance().newTrace("AddGame_trace");
+                        myTrace.start();
+
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         //add the game into user's games
                         mDatabase.child("user_games").child(user.getUid()).child(name).setValue(true);
@@ -70,6 +76,8 @@ public class AddGameActivity extends AppCompatActivity {
                         updates.put("num_users", ServerValue.increment(1));
                         mDatabase.child("games").child(name).updateChildren(updates);
                         Toast.makeText(AddGameActivity.this, "Game template found, " + name + " has been added to your repo!", Toast.LENGTH_SHORT).show();
+
+                        myTrace.stop();
                         finish();
                     }
                     else {

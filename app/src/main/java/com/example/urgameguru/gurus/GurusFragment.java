@@ -1,5 +1,6 @@
 package com.example.urgameguru.gurus;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.urgameguru.FirstDrawListener;
 import com.example.urgameguru.R;
 import com.example.urgameguru.game_detail.GameDetailActivity;
 import com.example.urgameguru.my_expo.AddGameActivity;
@@ -30,6 +32,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +48,15 @@ public class GurusFragment extends Fragment implements MostPopularAdapter.ItemCl
     private DatabaseReference databaseReference;
     private Query query_most_popular_games;
     private Query query_most_recent_games;
+
+    private Trace fragmentLoadTrace;
+
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        // TODO (2): Start trace recording as soon as the Fragment is attached to its host Activity.
+        fragmentLoadTrace = FirebasePerformance.startTrace("GurusFragment-LoadTime");
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -122,6 +135,20 @@ public class GurusFragment extends Fragment implements MostPopularAdapter.ItemCl
             }
         };
         query_most_recent_games.addValueEventListener(eventListener2);
+
+        FirstDrawListener.registerFirstDrawListener(view, new FirstDrawListener.OnFirstDrawCallback() {
+
+            @Override
+            public void onDrawingStart() {
+                // In practice you can also record this event separately
+            }
+
+            @Override
+            public void onDrawingFinish() {
+                // This is when the Fragment UI is completely drawn on the screen
+                fragmentLoadTrace.stop();
+            }
+        });
     }
 
     @Override

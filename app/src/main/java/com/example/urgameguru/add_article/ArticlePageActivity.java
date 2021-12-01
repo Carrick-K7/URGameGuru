@@ -26,6 +26,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -89,6 +91,9 @@ public class ArticlePageActivity extends Activity {
 
 
         btSave.setOnClickListener(v -> {
+            Trace TraceSave = FirebasePerformance.getInstance().newTrace("UploadArticle_trace");
+            TraceSave.start();
+
             pbSave.setVisibility(View.VISIBLE);
             btEdit.setVisibility(View.VISIBLE);
             mEditor.setInputEnabled(false);
@@ -109,11 +114,16 @@ public class ArticlePageActivity extends Activity {
             }).addOnFailureListener(e -> {
                 Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             });
+
+            TraceSave.stop();
         });
 
         btEdit.setOnClickListener(v -> {
+            Trace TraceEdit = FirebasePerformance.getInstance().newTrace("EditArticle_trace");
+            TraceEdit.start();
             btEdit.setVisibility(View.INVISIBLE);
             mEditor.setInputEnabled(true);
+            TraceEdit.stop();
         });
 
     }

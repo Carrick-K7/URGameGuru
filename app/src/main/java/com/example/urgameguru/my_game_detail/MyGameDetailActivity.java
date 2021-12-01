@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
+import com.example.urgameguru.FirstDrawListener;
 import com.example.urgameguru.R;
 import com.example.urgameguru.add_article.ArticlePageActivity;
 import com.example.urgameguru.my_expo.AddGameDetailActivity;
@@ -29,10 +30,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class MyGameDetailActivity extends Activity {
+    private final Trace viewLoadTrace = FirebasePerformance.startTrace("MyGameDetailActivity-LoadTime");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +44,7 @@ public class MyGameDetailActivity extends Activity {
         setContentView(R.layout.activity_my_game_detail);
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance("https://urgameguru-it5007-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-
+        View mainView = findViewById(android.R.id.content);
         String name = getIntent().getStringExtra("name");
 
         findViewById(R.id.et_my_show_board).setOnFocusChangeListener((v, hasFocus) -> {
@@ -117,6 +121,18 @@ public class MyGameDetailActivity extends Activity {
         };
         mDatabase.child("games").child(name).addListenerForSingleValueEvent(eventListener);
 
+        FirstDrawListener.registerFirstDrawListener(mainView, new FirstDrawListener.OnFirstDrawCallback() {
+            @Override
+            public void onDrawingStart() {
+                // In practice you can also record this event separately
+            }
+
+            @Override
+            public void onDrawingFinish() {
+                // This is when the Activity UI is completely drawn on the screen
+                viewLoadTrace.stop();
+            }
+        });
     }
 
     public void hideKeyboard(View view) {
