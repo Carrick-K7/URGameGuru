@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_my_expo"
-        android:name="com.example.urgameguru.my_expo.MyExpoFragment"
+        android:name="com.example.urgameguru.ui.my_expo.MyExpoFragment"
         android:label="@string/title_my_expo"
         tools:layout="@layout/fragment_my_expo" />
 
     <fragment
         android:id="@+id/navigation_gurus"
-        android:name="com.example.urgameguru.gurus.GurusFragment"
+        android:name="com.example.urgameguru.ui.gurus.GurusFragment"
         android:label="@string/title_gurus"
         tools:layout="@layout/fragment_gurus" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.example.urgameguru.settings.SettingsFragment"
+        android:name="com.example.urgameguru.ui.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

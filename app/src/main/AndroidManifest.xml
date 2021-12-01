@@ -15,26 +15,21 @@
             android:name="firebase_performance_logcat_enabled"
             android:value="true" />
         <activity
-            android:name=".add_article.ArticlePageActivity"
+            android:name=".activity.ArticlePageActivity"
             android:exported="false" />
         <activity
-            android:name=".upload_media.UploadMediaActivity"
+            android:name=".activity.UploadMediaActivity"
             android:exported="true" />
         <activity
-            android:name=".show_media.ShowImageActivity"
+            android:name=".activity.ShowImageActivity"
             android:exported="true" />
         <activity
-            android:name=".comment_list.CommentListActivity"
-            android:exported="true"
-            android:label="@string/title_activity_comment_list"
-            android:theme="@style/Theme.URGameGuru.NoActionBar" />
-        <activity
-            android:name=".show_article.ShowArticleActivity"
+            android:name=".activity.ShowArticleActivity"
             android:exported="true"
             android:label="@string/title_activity_article_list"
             android:theme="@style/Theme.URGameGuru.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true"
             android:label="@string/title_login_activity" >
             <intent-filter>
@@ -44,21 +39,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".my_expo.AddGameActivity"
+            android:name=".activity.AddGameActivity"
             android:exported="true"
             android:label="AddGameActivity" />
         <activity
-            android:name=".my_expo.AddGameDetailActivity"
+            android:name=".activity.AddGameDetailActivity"
             android:exported="true"
             android:label="AddGameDetailActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name" />
-        <activity android:name=".my_game_detail.MyGameDetailActivity" />
-        <activity android:name=".game_detail.GameDetailActivity" />
-        <activity android:name=".show_media.ShowVideoActivity"/>
-        <activity android:name=".add_comment.AddCommentActivity"/>
+        <activity android:name=".activity.MyGameDetailActivity" />
+        <activity android:name=".activity.GameDetailActivity" />
+        <activity android:name=".activity.ShowVideoActivity"/>
+        <activity android:name=".activity.AddCommentActivity"/>
     </application>
 
 </manifest>

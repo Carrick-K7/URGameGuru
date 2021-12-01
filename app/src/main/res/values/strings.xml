@@ -169,5 +169,10 @@
     <string name="label_submit">Submit</string>
     <string name="game_name">Game name</string>
     <string name="hint_rate">Rate (0~5)</string>
-    <string name="label_comment_date">31-03-2020</string>
+    <string name="label_comment_date">31–03-2020</string>
+    <string name="hint_in_maintenance">Sorry, the function is under maintenance :)</string>
+    <string name="hint_page_in_maintenance">Sorry, the page is under maintenance :)</string>
+    <string name="hint_function_in_maintainance">Sorry, the function is under maintenance :)</string>
+    <string name="dash">-</string>
+    <string name="label_articles_cap">Articles</string>
 </resources>

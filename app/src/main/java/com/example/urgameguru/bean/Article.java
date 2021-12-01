@@ -1,7 +1,5 @@
 package com.example.urgameguru.bean;
 
-import com.example.urgameguru.game_detail.ArticleAdapter;
-
 public class Article {
     private String articleName;
     private String articleUri;

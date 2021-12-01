@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gurus.GurusFragment">
+    tools:context=".ui.gurus.GurusFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:queryBackground="@android:color/transparent"
-        app:queryHint="@string/hint_search" />
+        app:queryHint="@string/hint_function_in_maintainance" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_search_first_column"
