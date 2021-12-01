@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +26,9 @@ import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.example.urgameguru.R;
@@ -36,20 +40,20 @@ public class AddGameActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     // [END declare_database_ref]
 
-    public AddGameActivity() {
-        // [START initialize_database_ref]
-        mDatabase = FirebaseDatabase.getInstance("https://urgameguru-it5007-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-        // [END initialize_database_ref]
-    }
+    String[] existedGameList;
+    AutoCompleteTextView avGameName;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_game);
 
+        avGameName = findViewById(R.id.et_game_name);
+
+        mDatabase = FirebaseDatabase.getInstance("https://urgameguru-it5007-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+
         MaterialButton btAdd = findViewById(R.id.bt_add_game_name);
         btAdd.setOnClickListener(v -> {
-            TextInputEditText et_name = findViewById(R.id.et_game_name);
-            String name = et_name.getText().toString();
+            String name = avGameName.getText().toString();
 
             ValueEventListener eventListener = new ValueEventListener() {
                 @Override
@@ -65,6 +69,7 @@ public class AddGameActivity extends AppCompatActivity {
                         Map<String, Object> updates = new HashMap<>();
                         updates.put("num_users", ServerValue.increment(1));
                         mDatabase.child("games").child(name).updateChildren(updates);
+                        Toast.makeText(AddGameActivity.this, "Game template found, " + name + " has been added to your repo!", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     else {
@@ -78,7 +83,20 @@ public class AddGameActivity extends AppCompatActivity {
                 public void onCancelled(DatabaseError databaseError) {}
             };
             mDatabase.child("games").addListenerForSingleValueEvent(eventListener);
-
         });
+
+        DatabaseReference gameListRef = mDatabase.child("games");
+        gameListRef.get().addOnSuccessListener(dataSnapshot -> {
+            List<String> listGameList = new ArrayList<>();
+            for (DataSnapshot game: dataSnapshot.getChildren()) {
+                listGameList.add(game.getKey());
+            }
+
+            existedGameList = listGameList.toArray(new String[0]);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_dropdown_item_1line, existedGameList);
+            avGameName.setAdapter(adapter);
+        });
+
     }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_add_comment_game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/game_name"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_comment_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:textSize="16sp"
+        android:background="@drawable/border"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_comment_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_rate"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_submit_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/label_submit"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

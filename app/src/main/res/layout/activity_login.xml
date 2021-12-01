@@ -26,6 +26,7 @@
         android:layout_marginEnd="30dp"
         android:drawableStart="@drawable/ic_baseline_person_green_24"
         android:hint="@string/hint_user_name"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

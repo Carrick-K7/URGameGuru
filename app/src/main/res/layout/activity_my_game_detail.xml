@@ -137,8 +137,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="My screenshots and clips"
-            android:paddingLeft="20dp"
-            android:paddingTop="3dp"
+            android:layout_marginStart="20dp"
             android:textSize="18sp"
             android:layout_weight="1"/>
 
@@ -165,7 +164,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_screenshot_list"
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:text="@string/label_screenshots"
             android:gravity="center" />
@@ -173,7 +172,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_clip_list"
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="60dp"
             android:text="@string/label_clips"
             android:gravity="center"
             android:layout_weight="1"
@@ -191,8 +190,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="My articles"
-            android:paddingLeft="20dp"
-            android:paddingTop="3dp"
+            android:layout_marginStart="20dp"
+
             android:textSize="18dp"
             android:layout_weight="1"/>
 
@@ -206,11 +205,10 @@
 
     </LinearLayout>
 
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_article_list"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"

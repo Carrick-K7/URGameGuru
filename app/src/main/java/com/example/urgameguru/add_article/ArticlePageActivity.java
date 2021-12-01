@@ -55,7 +55,7 @@ public class ArticlePageActivity extends Activity {
     ProgressBar pbSave;
 
     String articleType, articleStr;
-    String uri, articleName;
+    String uri, articleName, userName;
     String gameName;
 
     @Override
@@ -76,6 +76,7 @@ public class ArticlePageActivity extends Activity {
         gameName = intent.getStringExtra("name");
         uri = intent.getStringExtra("articleUri");
         articleName = intent.getStringExtra("articleName");
+        userName = intent.getStringExtra("userName");
 
         if (uri != null) { getArticle(uri, articleName); };
         setUpIcon();
@@ -84,6 +85,8 @@ public class ArticlePageActivity extends Activity {
         storageRef = FirebaseStorage.getInstance().getReference();
         databaseRef = FirebaseDatabase.getInstance("https://urgameguru-it5007-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
         articleType = "review";
+
+
 
         btSave.setOnClickListener(v -> {
             pbSave.setVisibility(View.VISIBLE);
@@ -98,7 +101,7 @@ public class ArticlePageActivity extends Activity {
             UploadTask uploadTask = uploadRef.putStream(stream);
             uploadTask.addOnSuccessListener(taskSnapshot -> {
                 uploadRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
-                    Article article = new Article(etArticleName.getText().toString(), downloadUri.toString());
+                    Article article = new Article(etArticleName.getText().toString(), downloadUri.toString(), user.getEmail());
                     String dbUploadPath = "articles/" + gameName + "/" + articleType + "/" + user.getUid() + "/" + etArticleName.getText().toString();
                     databaseRef.child(dbUploadPath).setValue(article);
                     pbSave.setVisibility(View.INVISIBLE);
@@ -151,6 +154,12 @@ public class ArticlePageActivity extends Activity {
                 mEditor.setHtml(articleStr);
                 mEditor.setInputEnabled(false);
                 btEdit.setVisibility(View.VISIBLE);
+
+                if (!userName.isEmpty() && !userName.equals(user.getEmail())) {
+                    mEditor.setInputEnabled(false);
+                    btEdit.setVisibility(View.INVISIBLE);
+                    btSave.setVisibility(View.INVISIBLE);
+                }
             });
         });
     }
