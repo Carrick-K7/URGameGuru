@@ -34,6 +34,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -97,6 +99,9 @@ public class AddGameDetailActivity extends AppCompatActivity {
 
         btAdd.setOnClickListener(v -> {
 
+            Trace myTrace = FirebasePerformance.getInstance().newTrace("AddGameDetail_trace");
+            myTrace.start();
+
             //store game information
             TextInputEditText et_developer = findViewById(R.id.et_developer);
             String developer = et_developer.getText().toString();
@@ -132,6 +137,7 @@ public class AddGameDetailActivity extends AppCompatActivity {
                 Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             }).addOnSuccessListener(taskSnapshot -> {
                 Toast.makeText(this, "Upload success!", Toast.LENGTH_SHORT).show();
+                myTrace.stop();
                 finish();
             });
 
