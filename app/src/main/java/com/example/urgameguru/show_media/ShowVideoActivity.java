@@ -43,19 +43,6 @@ public class ShowVideoActivity extends AppCompatActivity implements ShowVideoAda
 
         setUpRV();
         getVideoListFromFB();
-
-        FirstDrawListener.registerFirstDrawListener(mainView, new FirstDrawListener.OnFirstDrawCallback() {
-            @Override
-            public void onDrawingStart() {
-                // In practice you can also record this event separately
-            }
-
-            @Override
-            public void onDrawingFinish() {
-                // This is when the Activity UI is completely drawn on the screen
-                viewLoadTrace.stop();
-            }
-        });
     }
 
     @Override
@@ -87,6 +74,7 @@ public class ShowVideoActivity extends AppCompatActivity implements ShowVideoAda
             adapter = new ShowVideoAdapter(this, videoList);
             adapter.setClickListener(this);
             recyclerView.setAdapter(adapter);
+            viewLoadTrace.stop();
         });
     }
 
